@@ -1,4 +1,5 @@
 import pygame
+from bodypart import BodyPart
 
 pygame.init()
 
@@ -36,7 +37,7 @@ class Snake:
             rects.append((body_part.x, body_part.y, body_part.w, body_part.h))
         return rects
 
-    def move(self):  # could change direction in this method depending on how speed looks, cleaning main
+    def move(self):
         if len(self.turns) != 0:
             for x, y, direction in self.turns:
                 for part in self.body_lst:
@@ -53,28 +54,3 @@ class Snake:
 
     def turn(self, pos):
         self.turns.append(pos)
-
-
-class BodyPart:
-    def __init__(self, x, y, p_dir="left", w=20, h=20, head=False, tail=False):
-        self.x = x
-        self.y = y
-        self.w = w
-        self.h = h
-        self.is_head = head
-        self.is_tail_and_has_turned = (tail, False)  # if tail and has turned
-        self.p_dir = p_dir
-
-    def move(self, change_pixels=20):
-        if self.p_dir == "left":
-            change = (-change_pixels, 0)
-        elif self.p_dir == "right":
-            change = (change_pixels, 0)
-        elif self.p_dir == "up":
-            change = (0, -change_pixels)
-        else:
-            change = (0, change_pixels)
-
-        self.x += change[0]
-        self.y += change[1]
-
