@@ -4,6 +4,8 @@ import math
 import time
 from snakeobj import Snake
 
+# TODO Clean up code in all files, add docstrings, update readme, clean up UI, and add replay method
+
 # initalizing pygame
 pygame.init()
 
